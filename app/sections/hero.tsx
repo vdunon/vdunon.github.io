@@ -21,18 +21,18 @@ export default function Hero()
                         <Button variant="tertiary">Upload CV</Button>
                     </div>
                     <div className="flex gap-5">
-                        <Social>Github</Social>
-                        <Social>Github</Social>
-                        <Social>Github</Social>
+                        <Social social="Github"/>
+                        <Social social="LinkedIn"/>
+                        <Social social="Email"/>
                     </div>
                 </div>
                 <div className="flex content-center">
                     <Image
                         className="-ml-5 max-h-6/10 self-center"
-                        src="/image_hero.png"
+                        src="/images/hero_image.svg"
                         alt="A man sitting near a desk"
-                        width={935}
-                        height={853}
+                        width={3000}
+                        height={3000}
                         sizes="100%"
                         priority
                     />
