@@ -3,14 +3,16 @@ import Image from "next/image";
 
 interface SocialParams {
     social: "Github" | "LinkedIn" | "Email";
+    link: string;
     onClick?: MouseEventHandler;
 }
 
 export default function Social({
     social,
+    link,
     onClick
 }: Readonly<SocialParams>) {
-    const styles: string = "block cursor-pointer border border-gray-600 p-1 rounded-md font-medium transition-all";
+    const styles = "block cursor-pointer border border-gray-600 p-1 rounded-md font-medium transition-all hover:translate-y-1";
     let src: string = "";
 
     if (social == "Github")
@@ -23,7 +25,8 @@ export default function Social({
         <a
             onClick={onClick}
             className={`${styles}`}
-            href="#"
+            href={link}
+            target="blank"
         >
             <Image
                 className=""

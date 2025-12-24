@@ -16,14 +16,14 @@ export default function Hero()
                     <h3 className="text-[1.5em] py-10">
                         A future expert involved inside new technologies industry.
                     </h3>
-                    <div className="flex gap-5 py-4">
-                        <Button variant="primary">Discover Me</Button>
+                    <div className="grid grid-cols-2 gap-5 py-4 w-max">
+                        <Button variant="primary" href="#about">Discover Me</Button>
                         <Button variant="tertiary">Upload CV</Button>
                     </div>
                     <div className="flex gap-5">
-                        <Social social="Github"/>
-                        <Social social="LinkedIn"/>
-                        <Social social="Email"/>
+                        <Social social="Github" link="https://github.com/Nostlix/"/>
+                        <Social social="LinkedIn" link="https://www.linkedin.com/in/valentin-dunon/"/>
+                        <Social social="Email" link="mailto:vdunon91@gmail.com"/>
                     </div>
                 </div>
                 <div className="flex content-center">

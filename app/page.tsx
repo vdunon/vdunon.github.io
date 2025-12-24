@@ -10,6 +10,7 @@ export default function Home() {
       <CardsArea
         title="About me"
         subtitle="Since the age of 12 years old, i’m passionated by new technologies. That’s why I started to learn coding by myself. Now I use what i learned into my school Epitech !"
+        id="about"
       >
         <Card
           title="Strategic"
