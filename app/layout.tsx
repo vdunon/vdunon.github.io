@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Jockey_One } from "next/font/google";
 import "./css/globals.css";
@@ -23,6 +24,15 @@ export default function RootLayout({
       <body
         className={`${jockerOne.variable} antialiased`}
       >
+        <a href="https://www.epitech.eu/" target="blank">
+          <Image
+            className="absolute right-5 top-5"
+            src="/logos/epitech.svg"
+            alt="Epitech's logo"
+            width={100}
+            height={20}
+          />
+        </a>
         {children}
       </body>
     </html>

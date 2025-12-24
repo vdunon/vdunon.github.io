@@ -1,6 +1,7 @@
 import Hero from "./sections/hero"
 import CardsArea from "./sections/cards_area";
 import Card from "./components/card";
+import Interested from "./sections/interested";
 
 export default function Home() {
   return (
@@ -38,7 +39,91 @@ export default function Home() {
       <CardsArea
         title="Skills"
         subtitle="Discover what I've learned to use throughout my journey"
-      />
+      >
+        <Card
+          title="Programming"
+          img="/icons/strategic.svg"
+          imgAlt="Strategic icon"
+          imgHeight={40}
+          imgWidth={40}
+        >
+          <ul className="list-disc ml-4 text-gray-700">
+            <li>Python</li>
+            <li>C</li>
+            <li>PHP</li>
+            <li>Luau</li>
+          </ul>
+        </Card>
+        <Card
+          title="Web"
+          img="/icons/learn.svg"
+          imgAlt="Learn icon"
+          imgHeight={40}
+          imgWidth={40}
+        >
+          <ul className="list-disc ml-4 text-gray-700">
+            <li>Javascript</li>
+            <li>Typescript</li>
+            <li>Embedded JS (EJS)</li>
+            <li>Node.Js</li>
+            <li>Express.Js</li>
+          </ul>
+        </Card>
+        <Card
+          title="Databases"
+          img="/icons/settings.svg"
+          imgAlt="Logic icon"
+          imgHeight={40}
+          imgWidth={40}
+        >
+          <ul className="list-disc ml-4 text-gray-700">
+            <li>MySQL</li>
+            <li>MariaDB</li>
+            <li>MongoDB</li>
+          </ul>
+        </Card>
+        <Card
+          title="OS"
+          img="/icons/settings.svg"
+          imgAlt="Logic icon"
+          imgHeight={40}
+          imgWidth={40}
+        >
+          <ul className="list-disc ml-4 text-gray-700">
+            <li>Windows</li>
+            <li>Linux</li>
+            <li>UNIX</li>
+          </ul>
+        </Card>
+        <Card
+          title="Tools"
+          img="/icons/settings.svg"
+          imgAlt="Logic icon"
+          imgHeight={40}
+          imgWidth={40}
+        >
+          <ul className="list-disc ml-4 text-gray-700">
+            <li>Bash</li>
+            <li>CSFML</li>
+            <li>Figma</li>
+            <li>Discord.Js</li>
+          </ul>
+        </Card>
+        <Card
+          title="DevOps"
+          img="/icons/settings.svg"
+          imgAlt="Logic icon"
+          imgHeight={40}
+          imgWidth={40}
+        >
+          <ul className="list-disc ml-4 text-gray-700">
+            <li>Git/Github</li>
+            <li>Github Actions (CI/CD)</li>
+            <li>Github Projects</li>
+          </ul>
+        </Card>
+      </CardsArea>
+      <Interested/>
     </main>
   );
 }

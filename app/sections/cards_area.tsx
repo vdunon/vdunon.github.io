@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import SectionTitle from "../components/section_title";
 
 interface CardsAreaParams {
     children: ReactNode;
@@ -14,7 +15,7 @@ export default function CardsArea({
 {
     return (
         <section className="pt-10">
-            <h2 className="text-3xl text-center">{title}</h2>
+            <SectionTitle title={title}/>
             <h3 className="text-gray-600 pb-10 pt-5 text-center">{subtitle}</h3>
             <div className="grid grid-cols-3 gap-15">
                 {children}
