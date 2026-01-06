@@ -1,8 +1,13 @@
 export default function SectionTitle({
-    title
-}: { title: string })
+    title,
+    centered = true
+}: { title: string, centered?: boolean })
 {
+    let classNames: string = "text-3xl";
+
+    if (centered)
+        classNames += " text-center";
     return (
-        <h2 className="text-3xl text-center">{title}</h2>
+        <h2 className={classNames}>{title}</h2>
     )
 }
