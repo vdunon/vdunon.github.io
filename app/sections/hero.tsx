@@ -18,7 +18,13 @@ export default function Hero()
                     </h3>
                     <div className="grid grid-cols-2 gap-5 py-4 w-max">
                         <Button variant="primary" href="#about">Discover Me</Button>
-                        <Button variant="tertiary">Upload CV</Button>
+                        <Button
+                        variant="tertiary"
+                        href="/documents/CV_assistant_chef_de_projet_it_Valentin_DUNON.pdf"
+                        download={true}
+                        >
+                        Upload CV
+                        </Button>
                     </div>
                     <div className="flex gap-5">
                         <Social social="Github" link="https://github.com/Nostlix/"/>

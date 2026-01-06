@@ -10,6 +10,7 @@ interface ButtonParams {
     children: ReactNode;
     variant: "primary" | "secondary" | "tertiary";
     href?: string;
+    download?: boolean;
     onClick?: MouseEventHandler;
 }
 
@@ -17,6 +18,7 @@ export default function Button({
     children,
     variant = "primary",
     href,
+    download,
     onClick
 }: Readonly<ButtonParams>) {
   const styles = "block cursor-pointer px-4 py-2 rounded-md font-medium transition-all hover:scale-97";
@@ -31,6 +33,7 @@ export default function Button({
         <a className={`block cursor-pointer rounded-md font-medium transition-all hover:scale-97 ${variants[variant]}`}
         href={href}
         onClick={onClick}
+        download={download}
         >
             <span className="block bg-background rounded-md p-2 px-5 h-1/1">
               <span className="text-main">{children}</span>
@@ -43,6 +46,7 @@ export default function Button({
       className={`${styles} ${variants[variant]}`}
       href={href}
       onClick={onClick}
+      download={download}
     >
       {children}
     </a>

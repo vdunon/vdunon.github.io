@@ -21,7 +21,13 @@ export default function Interested()
                     <div className="w-max">
                         <SectionTitle title="My Resume :" centered={false}/>
                         <div className="w-max">
-                            <Button variant="secondary">Upload CV</Button>
+                            <Button
+                            variant="secondary"
+                            href="/documents/CV_assistant_chef_de_projet_it_Valentin_DUNON.pdf"
+                            download={true}
+                            >
+                            Upload CV
+                            </Button>
                         </div>
                     </div>
                 </div>
