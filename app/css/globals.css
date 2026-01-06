@@ -21,10 +21,13 @@
   --font-sans: var(--font-jockey-one);
 }
 
-.title {
+.text-main, .title {
   background-image: var(--gradient-main);
   color: transparent;
   background-clip: text;
+}
+
+.title {
   font-size: 4em;
   line-height: 1em;
 }
