@@ -11,21 +11,42 @@ const jockerOne = Jockey_One({
 });
 
 export const metadata: Metadata = {
-  title: "Valentin Dunon - Portfolio",
-  applicationName: "Valentin Dunon",
-  description: "Discover who am I, including my projects",
+  title: "Valentin Dunon | Future Epitech Expert",
+  applicationName: "Valentin Dunon Portfolio",
+  description: "Explore the portfolio of Valentin Dunon, Full-Stack Developer & Future IT Expert.",
   icons: "/icons/logo_portfolio.png",
   referrer: 'origin-when-cross-origin',
-  keywords: ['Valentin', 'Dunon', 'Stage', 'Portfolio', 'Github'],
+  keywords: [
+    'Valentin Dunon',
+    'Full-Stack Developer',
+    'Internship 2026',
+    'Github',
+    'C',
+    'React',
+    'Node.Js',
+    'Next.Js',
+    'TypeScript',
+    'Web Development',
+    'IT Project Management'
+  ],
   authors: [{ name: 'Valentin Dunon' }],
   creator: 'Valentin Dunon',
   publisher: 'Valentin Dunon',
   openGraph: {
-    title: 'Portfolio - Valentin Dunon',
-    description: 'Discover who am I, including my projects',
+    title: 'Valentin Dunon | Future Epitech Expert',
+    siteName: 'Valentin Dunon Portfolio',
+    description: 'Discover me, future new technologies expert.',
     url: 'https://nostlix.github.io',
-    siteName: 'Portfolio - Valentin Dunon',
-    locale: 'en_US'
+    locale: 'en_US',
+    images: [
+      {
+        url: 'https://nostlix.github.io/images/og_preview.png',
+        width: 1200,
+        height: 630,
+        alt: "Valentin Dunon Portfolio"
+      }
+    ],
+    type: "website"
   },
   robots: {
     index: true,
