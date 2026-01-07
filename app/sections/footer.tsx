@@ -10,7 +10,6 @@ export default function Footer()
             <p className="flex gap-1 justify-center">
                 Contact Me:
                 <a href="mailto:vdunon91@gmail.com">vdunon91@gmail.com</a>
-                | 07.66.80.30.92
             </p>
         </footer>
     )
