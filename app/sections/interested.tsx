@@ -13,7 +13,7 @@ export default function Interested()
                     <div className="w-max">
                         <SectionTitle title="Contact Me :" centered={false}/>
                         <div className="flex gap-5">
-                            <Social social="Github" link="https://github.com/Nostlix/"/>
+                            <Social social="Github" link="https://github.com/vdunon/"/>
                             <Social social="LinkedIn" link="https://www.linkedin.com/in/valentin-dunon/"/>
                             <Social social="Email" link="mailto:vdunon91@gmail.com"/>
                         </div>

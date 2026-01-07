@@ -36,11 +36,11 @@ export const metadata: Metadata = {
     title: 'Valentin Dunon | Future Epitech Expert',
     siteName: 'Valentin Dunon Portfolio',
     description: 'Discover me, future new technologies expert.',
-    url: 'https://nostlix.github.io',
+    url: 'https://vdunon.github.io',
     locale: 'en_US',
     images: [
       {
-        url: 'https://nostlix.github.io/images/og_preview.png',
+        url: 'https://vdunon.github.io/images/og_preview.png',
         width: 1200,
         height: 630,
         alt: "Valentin Dunon Portfolio"

@@ -17,7 +17,7 @@ export default function Projects()
                         Key features include login, infinite scroll, photo upload, ratings, photo galleries, profiles, fully responsive, and a follow system.
                     </p>
                     <div className="flex gap-5 mt-5">
-                        <Social social="Github" link="https://github.com/Nostlix/"/>
+                        <Social social="Github" link="https://github.com/vdunon/"/>
                         <Social social="LinkedIn" link="https://www.linkedin.com/in/valentin-dunon"/>
                     </div>
                 </div>
