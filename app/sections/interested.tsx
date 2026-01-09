@@ -9,9 +9,9 @@ export default function Interested()
         <section className="pt-10">
             <SectionTitle title="Interested ?"/>
             <div className="grid sm:grid-cols-2 gap-3">
-                <div className="flex sm:flex-col justify-evenly gap-5 items-center">
+                <div className="flex sm:flex-col justify-evenly gap-5 w-max ml-[50%] translate-x-[-50%]">
                     <div className="w-max">
-                        <SectionTitle title="Contact Me :" centered={false}/>
+                        <SectionTitle title="Contact Me :" centered={false} size={3}/>
                         <div className="flex gap-5">
                             <Social social="Github" link="https://github.com/vdunon/"/>
                             <Social social="LinkedIn" link="https://www.linkedin.com/in/valentin-dunon/"/>
@@ -19,7 +19,7 @@ export default function Interested()
                         </div>
                     </div>
                     <div className="w-max">
-                        <SectionTitle title="My Resume :" centered={false}/>
+                        <SectionTitle title="My Resume :" centered={false} size={3}/>
                         <div className="w-max">
                             <Button
                             variant="secondary"

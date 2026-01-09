@@ -6,15 +6,18 @@ export default function Projects()
 {
     return (
         <section className="relative -mx-[5dvw] bg-transparent-main my-10 py-10">
-            <SectionTitle title="Projects"/>
+            <SectionTitle title="My favourite project"/>
             <div className="grid sm:grid-cols-2 px-10 gap-5">
                 <div>
-                    <SectionTitle title="Social Media - Outfit"/>
+                    <SectionTitle title="Social Media - Outfit" size={3}/>
                     <p>
                         A social network dedicated to clothing and fashion where users can see and rate their friends' outfits to get inspiration for their next look.
                         <br/>
                         <br/>
-                        Key features include login, infinite scroll, photo upload, ratings, photo galleries, profiles, fully responsive, and a follow system.
+                        Key features : login, infinite scroll, photo upload, ratings, photo galleries, profiles, fully responsive, follow system
+                        <br/>
+                        <br/>
+                        Technologies : PHP, JavaScript, CSS, REST APIs, GitHub
                     </p>
                     <div className="flex gap-5 mt-5">
                         <Social social="Github" link="https://github.com/vdunon/"/>
@@ -33,7 +36,7 @@ export default function Projects()
                     </div>
                 </div>
             </div>
-            <span className="absolute right-3 bottom-1.5">1/1</span>
+            <span className="absolute right-3 bottom-1.5 hidden">1/1</span>
         </section>
     )
 }
