@@ -2,10 +2,10 @@
 import { useEffect, useRef, useState } from "react";
 
 export interface BubblesConfig {
-    maxWidth?: number; // px
-    minWidth?: number; // px
-    maxDuration?: number; // secondes
-    minDuration?: number; // secondes
+    maxWidth?: number;
+    minWidth?: number;
+    maxDuration?: number;
+    minDuration?: number;
     maxBubbles?: number;
     gameActivated?: boolean;
 }
@@ -14,35 +14,22 @@ interface BubblesAreaProps {
     config?: BubblesConfig;
 }
 
-const bubbleStyle: React.CSSProperties = {
-    position: "absolute",
-    borderRadius: "50%",
-    background: "linear-gradient(135deg, rgba(145, 83, 227, 0.15), rgba(59, 130, 246, 0.1))",
-    border: "1px solid rgba(145, 83, 227, 0.25)",
-    boxShadow: "inset 0 4px 12px rgba(255, 255, 255, 0.2), 0 4px 10px rgba(0, 0, 0, 0.05)",
-    backdropFilter: "blur(1px)",
-    WebkitBackdropFilter: "blur(1px)",
-    mixBlendMode: "difference"
-};
-
 export default function BubblesArea({ config }: BubblesAreaProps) {
     const finalConfig = {
         maxWidth: 50,
         minWidth: 20,
         maxDuration: 55,
         minDuration: 15,
-        maxBubbles: 20,
+        maxBubbles: 24,
         gameActivated: false,
         ...config
-    };
+    } as const;
 
     const areaRef = useRef<HTMLDivElement>(null);
     const [score, setScore] = useState<number>(0);
     const [hasClickedAnyBubble, setHasClickedAnyBubble] = useState<boolean>(false);
 
-    const randomValue = (min: number, max: number) => {
-        return Math.floor(Math.random() * (max - min)) + min;
-    };
+    const randomValue = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min;
 
     useEffect(() => {
         const container = areaRef.current;
@@ -50,49 +37,53 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
 
         const activeBubbles: { element: HTMLSpanElement; animation: Animation }[] = [];
 
-        const createBubble = (isInitial = false) => {
+        const maxBubbles = finalConfig.maxBubbles;
+        const columns = Math.ceil(Math.sqrt(maxBubbles * (window.innerWidth / window.innerHeight)));
+        const rows = Math.ceil(maxBubbles / columns);
+
+        const createBubble = (index?: number) => {
             if (!container) return;
 
             const element = document.createElement("span");
+            element.className = "absolute rounded-full border border-purple-500/20 bg-gradient-to-br from-[#9153E3]/10 to-blue-500/5 shadow-[inset_0_4px_12px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.02)] backdrop-blur-[0.5px] transition-property[width,height,opacity] duration-300";
 
             const size = randomValue(finalConfig.minWidth, finalConfig.maxWidth);
-            const duration = randomValue(finalConfig.minDuration, finalConfig.maxDuration) * 1000; // ms
-            const direction = Math.random() > 0.5 ? "left" : "right";
+            const duration = randomValue(finalConfig.minDuration, finalConfig.maxDuration) * 1000;
+            const isGoingLeft = Math.random() > 0.5;
 
-            const startX = isInitial ? randomValue(0, 90) : -10;
-
-            Object.assign(element.style, bubbleStyle);
-            element.style.position = "absolute";
             element.style.width = `${size}px`;
             element.style.height = `${size}px`;
-            element.style.borderRadius = "50%";
-            element.style.top = `${randomValue(5, 95)}%`;
-            element.style.cursor = finalConfig.gameActivated && hasClickedAnyBubble ? "pointer" : "default";
 
+            element.style.left = "0px";
+
+            let startX = isGoingLeft ? 110 : -15;
+            let startY = randomValue(5, 90);
+
+            if (index !== undefined) {
+                const col = index % columns;
+                const row = Math.floor(index / columns);
+                const jitterX = (Math.random() - 0.5) * 12;
+                const jitterY = (Math.random() - 0.5) * 12;
+                startX = (col / columns) * 100 + jitterX;
+                startY = (row / rows) * 85 + 5 + jitterY;
+            }
+
+            element.style.top = `${startY}%`;
             container.appendChild(element);
 
+            const endX = isGoingLeft ? -15 : 110;
+            const totalXDistance = endX - startX;
+
             const keyframes = [
-                {
-                    [direction]: `${startX}vw`,
-                    transform: `translate(${direction === "left" ? "-100%" : "100%"}, 0)`
-                },
-                { transform: `translateY(${randomValue(-5, 5)}vh)` },
-                { transform: `translateY(${randomValue(-10, 10)}vh)` },
-                { transform: `translateY(${randomValue(-10, 10)}vh)` },
-                { transform: `translateY(${randomValue(-15, 15)}vh)` },
-                { transform: `translateY(${randomValue(-10, 10)}vh)` },
-                { transform: `translateY(${randomValue(-10, 10)}vh)` },
-                { transform: `translateY(${randomValue(-10, 10)}vh)` },
-                { transform: `translateY(${randomValue(-10, 10)}vh)` },
-                { transform: `translateY(${randomValue(-5, 5)}vh)` },
-                {
-                    [direction]: `110vw`,
-                    transform: `translate(${direction === "left" ? "-100%" : "100%"}, ${randomValue(-10, 15)}vh)`
-                }
+                { transform: `translate3d(${startX}vw, 0, 0)` },
+                { transform: `translate3d(${startX + totalXDistance * 0.25}vw, ${randomValue(-8, 12)}vh, 0)` },
+                { transform: `translate3d(${startX + totalXDistance * 0.5}vw, ${randomValue(-15, 20)}vh, 0)` },
+                { transform: `translate3d(${startX + totalXDistance * 0.75}vw, ${randomValue(-5, 15)}vh, 0)` },
+                { transform: `translate3d(${endX}vw, ${randomValue(-10, 10)}vh, 0)` }
             ];
 
             const animation = element.animate(keyframes, {
-                duration: duration,
+                duration: index !== undefined ? duration * (Math.abs(totalXDistance) / 125) : duration,
                 easing: "ease-in-out",
                 fill: "forwards"
             });
@@ -100,15 +91,14 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
             const bubbleData = { element, animation };
             activeBubbles.push(bubbleData);
 
-            animation.onfinish = () => {
-                destroyBubble(bubbleData);
-            };
+            animation.onfinish = () => destroyBubble(bubbleData);
 
             if (finalConfig.gameActivated) {
+                element.style.pointerEvents = "auto";
+                element.style.cursor = hasClickedAnyBubble ? "pointer" : "default";
+
                 element.addEventListener("click", () => {
                     animation.pause();
-
-                    element.style.transition = "all 0.5s ease";
                     element.style.width = "0px";
                     element.style.height = "0px";
                     element.style.opacity = "0";
@@ -117,20 +107,16 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
                     let points = 1;
                     if (durationInSeconds < 20 || size < 25) points = 5;
                     else if (durationInSeconds < 25 || size < 35) points = 3;
-                    else if (durationInSeconds < 35 || size < 40) points = 2;
-
                     setScore((prev) => prev + points);
 
                     if (!hasClickedAnyBubble) {
                         setHasClickedAnyBubble(true);
-                        container.querySelectorAll(".bubble-bg").forEach((el) => {
+                        container.querySelectorAll("span").forEach((el) => {
                             (el as HTMLElement).style.cursor = "pointer";
                         });
                     }
 
-                    setTimeout(() => {
-                        destroyBubble(bubbleData);
-                    }, 500);
+                    setTimeout(() => destroyBubble(bubbleData), 300);
                 });
             }
         };
@@ -139,35 +125,20 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
             bubble.element.remove();
             const index = activeBubbles.indexOf(bubble);
             if (index > -1) activeBubbles.splice(index, 1);
-
-            createBubble(false);
+            createBubble();
         };
 
-        for (let i = 0; i < finalConfig.maxBubbles; i++) {
-            createBubble(true);
-        }
+        for (let i = 0; i < maxBubbles; i++)
+            createBubble(i);
 
-        return () => {
-            activeBubbles.forEach((b) => b.element.remove());
-        };
+        return () => activeBubbles.forEach((b) => b.element.remove());
     }, [finalConfig.maxBubbles, finalConfig.gameActivated, hasClickedAnyBubble]);
 
     return (
-        <div
-            ref={areaRef}
-            id="bubble-bg"
-            className="absolute inset-0 h-full overflow-hidden pointer-events-none z-0 -ml-[var(--main-x-padding)]"
-        >
-            <style>{`
-                .bubble-bg {
-                    pointer-events: ${finalConfig.gameActivated ? "auto" : "none"};
-                }
-            `}</style>
+        <div ref={areaRef} className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <style>{`.bubble-bg { pointer-events: ${finalConfig.gameActivated ? "auto" : "none"}; }`}</style>
             {finalConfig.gameActivated && (
-                <div
-                    id="bubble-game-score"
-                    className="absolute right-4 top-4 px-4 py-2 bg-white text-slate-900 font-bold rounded-lg shadow-md z-50 select-none pointer-events-auto"
-                >
+                <div className="absolute right-4 top-4 px-4 py-2 bg-purple-800 text-white font-bold rounded-lg shadow-md z-50 pointer-events-auto">
                     <p className="m-0">Score: {score}</p>
                 </div>
             )}
