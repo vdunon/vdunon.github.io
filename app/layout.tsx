@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   creator: 'Valentin Dunon',
   publisher: 'Valentin Dunon',
   openGraph: {
-    title: 'Valentin Dunon | Future Epitech Expert',
+    title: 'Valentin Dunon | Epitech Expert',
     siteName: 'Valentin Dunon Portfolio',
-    description: 'Discover me, future new technologies expert.',
+    description: 'Discover me, new technologies expert.',
     url: 'https://vdunon.github.io',
     locale: 'en_US',
     images: [
