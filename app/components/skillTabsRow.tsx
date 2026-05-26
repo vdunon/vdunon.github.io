@@ -54,7 +54,7 @@ export default function SkillTabsRow({
     const animation = toRight ? "marquee-to-right" : "marquee-to-left";
 
     return (
-        <div className="marquee-container w-full overflow-hidden flex select-none gap-2">
+        <div className="marquee-container w-full overflow-hidden flex select-none gap-2 [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]">
             <div className={`flex flex-row gap-2 ${animation}`}>
                 <ul className={`flex flex-row gap-2`}>{skillItems}</ul>
                 <ul className={`flex flex-row gap-2`} aria-hidden="true">{skillItems2}</ul>
