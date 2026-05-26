@@ -1,4 +1,4 @@
-import SectionTitle from "../components/section_title";
+import SectionTitle from "../components/sectionTitle";
 import Image from "next/image";
 import Social from "../components/social";
 

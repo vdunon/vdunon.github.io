@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Button from "../components/button";
-import SectionTitle from "../components/section_title";
+import SectionTitle from "../components/sectionTitle";
 import Social from "../components/social";
 
 export default function Interested()

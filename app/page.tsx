@@ -1,5 +1,5 @@
 import Hero from "./sections/hero"
-import CardsArea from "./sections/cards_area";
+import CardsArea from "./sections/cardsArea";
 import Card from "./components/card";
 import Interested from "./sections/interested";
 import Projects from "./sections/projects";

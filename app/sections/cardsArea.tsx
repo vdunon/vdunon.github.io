@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import SectionTitle from "../components/section_title";
+import SectionTitle from "../components/sectionTitle";
 
 interface CardsAreaParams {
     children: ReactNode;
