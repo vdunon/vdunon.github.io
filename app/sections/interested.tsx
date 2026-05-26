@@ -27,7 +27,7 @@ export default function Interested()
                             href="/documents/CV_assistant_chef_de_projet_it_Valentin_DUNON.pdf"
                             download={true}
                             >
-                            Upload CV
+                            Download CV
                             </Button>
                         </div>
                     </div>
