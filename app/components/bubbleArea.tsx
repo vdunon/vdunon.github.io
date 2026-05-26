@@ -20,7 +20,7 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
         minWidth: 20,
         maxDuration: 55,
         minDuration: 15,
-        maxBubbles: 24,
+        maxBubbles: 28,
         gameActivated: false,
         ...config
     } as const;

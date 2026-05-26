@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Button from "../components/button";
-import Social from "../components/social";
-import "../css/hero.css";
 import SocialClickable from "../components/social";
 import BubblesArea from "../components/bubbleArea";
+import "../css/hero.css";
 
 export default function Hero()
 {
     return (
-        <section className="hero bg-[var(--background)]">
+        <section className="hero">
             <header>
                 <div className="h-1/1 flex flex-row hero-cols">
                     <div className="flex flex-col justify-center">
@@ -23,7 +22,7 @@ export default function Hero()
                             <Button variant="primary" href="#about">Discover Me</Button>
                             <Button
                             variant="tertiary"
-                            href="/documents/CV_assistant_chef_de_projet_it_Valentin_DUNON.pdf"
+                            href="/documents/CV_Valentin_DUNON.pdf"
                             download={true}
                             >
                             Download CV

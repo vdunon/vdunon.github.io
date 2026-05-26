@@ -7,7 +7,7 @@ import SkillsSection from "./sections/skills";
 
 export default function Home() {
   return (
-    <main>
+    <main style={{ marginTop: -70 }}>
       <Hero/>
       <CardsArea
         title="About me"

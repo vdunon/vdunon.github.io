@@ -1,8 +1,8 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import { Jockey_One } from "next/font/google";
 import Footer from "./sections/footer";
 import "./css/globals.css";
+import Navbar from "./components/navbar";
 
 const jockerOne = Jockey_One({
   weight: "400",
@@ -73,15 +73,7 @@ export default function RootLayout({
       <body
         className={`${jockerOne.variable} antialiased`}
       >
-        <a href="https://www.epitech.eu/" target="blank">
-          <Image
-            className="absolute right-5 top-5"
-            src="/logos/epitech.svg"
-            alt="Epitech's logo"
-            width={100}
-            height={20}
-          />
-        </a>
+        <Navbar/>
         {children}
         <Footer/>
       </body>

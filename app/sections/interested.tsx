@@ -24,7 +24,7 @@ export default function Interested()
                         <div className="w-max">
                             <Button
                             variant="secondary"
-                            href="/documents/CV_assistant_chef_de_projet_it_Valentin_DUNON.pdf"
+                            href="/documents/CV_Valentin_DUNON.pdf"
                             download={true}
                             >
                             Download CV
