@@ -1,0 +1,6 @@
+.bubble-bg {
+  background: linear-gradient(135deg, rgba(145, 83, 227, 0.15), rgba(59, 130, 246, 0.1));
+  border: 1px solid rgba(145, 83, 227, 0.25);
+  box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.2), 0 4px 10px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(1px);
+}

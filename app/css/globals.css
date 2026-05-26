@@ -15,6 +15,7 @@
   );
 
   --main-y-padding: 5dvh;
+  --main-x-padding: 5dvw;
 }
 
 @theme inline {
@@ -75,5 +76,5 @@ body {
 }
 
 main {
-  padding: var(--main-y-padding) 5dvw;
+  padding: var(--main-y-padding) var(--main-x-padding);
 }

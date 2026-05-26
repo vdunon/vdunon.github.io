@@ -3,11 +3,12 @@ import Button from "../components/button";
 import Social from "../components/social";
 import "../css/hero.css";
 import SocialClickable from "../components/social";
+import BubblesArea from "../components/bubbleArea";
 
 export default function Hero()
 {
     return (
-        <section className="hero">
+        <section className="hero bg-[var(--background)]">
             <header>
                 <div className="h-1/1 flex flex-row hero-cols">
                     <div className="flex flex-col justify-center">
@@ -72,6 +73,7 @@ export default function Hero()
                     />
                 </div>
             </a>
+            <BubblesArea></BubblesArea>
         </section>
     )
 }
