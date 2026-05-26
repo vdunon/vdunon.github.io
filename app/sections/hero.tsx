@@ -2,6 +2,7 @@ import Image from "next/image";
 import Button from "../components/button";
 import Social from "../components/social";
 import "../css/hero.css";
+import SocialClickable from "../components/social";
 
 export default function Hero()
 {
@@ -28,9 +29,9 @@ export default function Hero()
                             </Button>
                         </div>
                         <div className="flex gap-5">
-                            <Social social="Github" link="https://github.com/vdunon/"/>
-                            <Social social="LinkedIn" link="https://www.linkedin.com/in/valentin-dunon/"/>
-                            <Social social="Email" link="mailto:vdunon91@gmail.com"/>
+                            <SocialClickable social="Github" link="https://github.com/vdunon/"/>
+                            <SocialClickable social="LinkedIn" link="https://www.linkedin.com/in/valentin-dunon/"/>
+                            <SocialClickable social="Email" link="mailto:vdunon91@gmail.com"/>
                         </div>
                     </div>
                     <div className="hidden md:flex content-center">

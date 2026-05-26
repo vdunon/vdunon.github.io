@@ -1,6 +1,7 @@
 import SectionTitle from "../components/sectionTitle";
 import Image from "next/image";
 import Social from "../components/social";
+import SocialClickable from "../components/social";
 
 export default function Projects()
 {
@@ -20,8 +21,8 @@ export default function Projects()
                         Technologies : PHP, JavaScript, CSS, REST APIs, GitHub
                     </p>
                     <div className="flex gap-5 mt-5">
-                        <Social social="Github" link="https://github.com/vdunon/"/>
-                        <Social social="LinkedIn" link="https://www.linkedin.com/in/valentin-dunon"/>
+                        <SocialClickable social="Github" link="https://github.com/vdunon/"/>
+                        <SocialClickable social="LinkedIn" link="https://www.linkedin.com/in/valentin-dunon"/>
                     </div>
                 </div>
                 <div className="flex justify-center items-center">
