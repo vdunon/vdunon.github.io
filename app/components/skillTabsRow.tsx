@@ -2,8 +2,8 @@ import "../css/marquee.css";
 
 function SkillTab({ title, key }: {title: string, key:string}) {
     return (
-        <li className="inline-block w-[180px] flex-shrink-0 cursor-pointer bg-(image:--gradient-main) p-px rounded-lg" key={key}>
-            <div className="transition hover:bg-(image:--gradient-main) text-[#9153E3] hover:text-white bg-background rounded-lg p-2 h-full">
+        <li className="transition active:scale-95 inline-block w-[180px] flex-shrink-0 cursor-pointer bg-(image:--gradient-main) p-px rounded-lg" key={key}>
+            <div className="hover:bg-(image:--gradient-main) text-[#9153E3] hover:text-white bg-background rounded-lg p-2 h-full">
                 <h4 className="flex flex-col text-xl text-center">{title}</h4>
             </div>
         </li>
