@@ -11,9 +11,9 @@ const jockerOne = Jockey_One({
 });
 
 export const metadata: Metadata = {
-  title: "Valentin Dunon | Future Epitech Expert",
+  title: "Valentin Dunon | Epitech Expert",
   applicationName: "Valentin Dunon Portfolio",
-  description: "Explore the portfolio of Valentin Dunon, Full-Stack Developer & Future IT Expert.",
+  description: "Explore the portfolio of Valentin Dunon, Full-Stack Developer & IT Expert.",
   icons: "/icons/logo_portfolio.png",
   referrer: 'origin-when-cross-origin',
   keywords: [
