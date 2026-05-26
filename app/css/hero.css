@@ -1,5 +1,7 @@
 .hero {
-  height: calc(100dvh - 5dvh);
+  display: grid;
+  grid-template-rows: auto max-content;
+  height: calc(100dvh - var(--main-y-padding));
 }
 
 .hero-cols {

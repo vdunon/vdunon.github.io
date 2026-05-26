@@ -6,7 +6,8 @@ interface CardsAreaParams {
     title: string;
     subtitle: string;
     id?: string;
-    colsClass?: string
+    colsClass?: string;
+    padding?: boolean;
 }
 
 export default function CardsArea({
@@ -14,11 +15,12 @@ export default function CardsArea({
     title,
     subtitle,
     id,
+    padding = true,
     colsClass = "sm:grid-cols-3"
 }: CardsAreaParams)
 {
     return (
-        <section id={id} className="pt-10">
+        <section id={id} className={padding ? "pt-10" : ""}>
             <SectionTitle title={title}/>
             <h3 className="text-gray-600 mb-10 mt-5 text-center">{subtitle}</h3>
             <div className={`grid ${colsClass} gap-5 sm:gap-15`}>
