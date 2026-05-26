@@ -15,7 +15,7 @@ export default function Hero()
                             <h2 className="subtitle">Epitech Student</h2>
                         </div>
                         <h3 className="text-[1.5em] py-10">
-                            A future expert involved inside new technologies industry.
+                            Full-Stack developer building web apps with React & Node.js.
                         </h3>
                         <div className="grid grid-cols-2 gap-5 py-4 w-max">
                             <Button variant="primary" href="#about">Discover Me</Button>
