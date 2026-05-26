@@ -11,7 +11,7 @@ export const skillCategories: Record<SkillCategory, SkillData> = {
     "Web": {
         tags: [
             "TypeScript", "JavaScript", "EJS", "Node.js",
-            "Express.js", "HTML", "CSS", "Figma"
+            "Express.js", "HTML", "CSS", "Figma", "PHP"
         ],
         description: "I specialize in website and API creation, handling everything from responsive UI design to backend development using frameworks like Express.js."
     },
@@ -23,13 +23,13 @@ export const skillCategories: Record<SkillCategory, SkillData> = {
     },
     "Databases": {
         tags: [
-            "MySQL", "MariaDB", "MongoDB", "PostgreSQL"
+            "MySQL", "MariaDB", "MongoDB", "PostgreSQL", "Supabase"
         ],
         description: "I am comfortable architecting both relational and non-relational database layers, including schema design, data persistence, and secure query management."
     },
     "DevOps": {
         tags: [
-            "Git", "GitHub", "GitHub Actions", "GitHub Projects"
+            "Docker", "Git", "GitHub", "GitHub Actions"
         ],
         description: "I practice clean version control, agile project tracking, and set up basic automation systems through continuous integration (CI/CD) pipelines."
     },
@@ -41,7 +41,7 @@ export const skillCategories: Record<SkillCategory, SkillData> = {
     },
     "Tools": {
         tags: [
-            "Bash", "CSFML", "Figma", "Discord.js", "Office Pack"
+            "Bash", "Figma", "Discord.js", "Office Pack", "GitHub Projects"
         ],
         description: "I leverage automated scripting alongside specific libraries and creative tools to develop rich standalone apps, interactive media, and custom bot integrations."
     },
