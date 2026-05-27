@@ -16,14 +16,13 @@ export default function CardsArea({
     subtitle,
     id,
     padding = true,
-    colsClass = "sm:grid-cols-3"
 }: CardsAreaParams)
 {
     return (
         <section id={id} className={padding ? "pt-10" : ""}>
             <SectionTitle title={title}/>
             <h3 className="text-gray-600 mb-10 mt-5 text-center">{subtitle}</h3>
-            <div className={`grid ${colsClass} gap-5 sm:gap-15`}>
+            <div className={`grid gap-2`}>
                 {children}
             </div>
         </section>
