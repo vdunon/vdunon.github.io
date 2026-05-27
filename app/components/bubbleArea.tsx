@@ -211,7 +211,7 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
                     <div className="absolute right-4 top-4 px-4 py-2 bg-(image:--gradient-main) text-white font-bold rounded-lg shadow-md z-50 pointer-events-auto">
                         <p className="m-0">Score: {score}</p>
                     </div>
-                    <div className="absolute right-[50%] top-[50%] translate-x-[50%] -translate-y-[50%] font-bold text-2xl text-gray-800 rounded-lg z-50 pointer-events-auto">
+                    <div className="absolute right-[50%] top-[50%] translate-x-[50%] -translate-y-[50%] font-bold text-2xl text-gray-800 rounded-lg z-50 pointer-events-none">
                         <p className="m-0 text-center select-none">
                             Explode bubbles!
                             <br/>
