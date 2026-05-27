@@ -135,7 +135,7 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
     }, [finalConfig.maxBubbles, finalConfig.gameActivated, hasClickedAnyBubble]);
 
     return (
-        <div ref={areaRef} className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div ref={areaRef} className="fixed inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
             <style>{`.bubble-bg { pointer-events: ${finalConfig.gameActivated ? "auto" : "none"}; }`}</style>
             {finalConfig.gameActivated && (
                 <div className="absolute right-4 top-4 px-4 py-2 bg-purple-800 text-white font-bold rounded-lg shadow-md z-50 pointer-events-auto">
