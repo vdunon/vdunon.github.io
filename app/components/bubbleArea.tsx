@@ -184,6 +184,14 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
         };
     }, [finalConfig.maxBubbles, isGameActive, hasClickedAnyBubble]);
 
+    useEffect(() => {
+        window.addEventListener("keydown", (ev) => {
+            if (score > 0 && ev.key == "Escape")
+                handleExit();
+        })
+    }
+)
+
     return (
         <div
             ref={areaRef}
