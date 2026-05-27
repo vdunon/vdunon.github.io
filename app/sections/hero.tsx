@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Button from "../components/button";
 import SocialClickable from "../components/social";
-import BubblesArea from "../components/bubbleArea";
 import "../css/hero.css";
 
 export default function Hero()
@@ -21,11 +20,11 @@ export default function Hero()
                         <div className="grid grid-cols-2 gap-5 py-4 w-max">
                             <Button variant="primary" href="#about">Discover Me</Button>
                             <Button
-                            variant="tertiary"
-                            href="/documents/CV_Valentin_DUNON.pdf"
-                            download={true}
+                                variant="tertiary"
+                                href="/documents/CV_Valentin_DUNON.pdf"
+                                download={true}
                             >
-                            Download CV
+                                Download CV
                             </Button>
                         </div>
                         <div className="flex gap-5">
@@ -72,7 +71,6 @@ export default function Hero()
                     />
                 </div>
             </a>
-            <BubblesArea></BubblesArea>
         </section>
     )
 }

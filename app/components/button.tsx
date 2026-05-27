@@ -6,11 +6,15 @@ interface ButtonType {
     tertiary: string;
 }
 
+type ButtonVariants = "primary" | "secondary" | "tertiary";
+
 interface ButtonParams {
     children: ReactNode;
-    variant: "primary" | "secondary" | "tertiary";
+    variant?: ButtonVariants;
     href?: string;
     download?: boolean;
+    style?: React.CSSProperties;
+    className?: string;
     onClick?: MouseEventHandler;
 }
 
@@ -19,9 +23,11 @@ export default function Button({
     variant = "primary",
     href,
     download,
+    style,
+    className,
     onClick
 }: Readonly<ButtonParams>) {
-  const styles = "block cursor-pointer px-4 py-2 rounded-md font-medium transition-all hover:scale-97";
+  const styles = "text-center block cursor-pointer px-4 py-2 rounded-md font-medium transition-all hover:scale-97";
   const variants: ButtonType = {
     primary: "bg-purple-600 text-white hover:bg-purple-700",
     secondary: "bg-(image:--gradient-main) p-px rounded-lg",
@@ -30,7 +36,9 @@ export default function Button({
 
   if (variant == "secondary") {
     return (
-        <a className={`block cursor-pointer rounded-md font-medium transition-all hover:scale-97 ${variants[variant]}`}
+        <a
+        className={`${className} block cursor-pointer rounded-md font-medium transition-all hover:scale-97 ${variants[variant]}`}
+        style={{...style}}
         href={href}
         onClick={onClick}
         download={download}
@@ -43,7 +51,7 @@ export default function Button({
   }
   return (
     <a
-      className={`${styles} ${variants[variant]}`}
+      className={`${className} ${styles} ${variants[variant]}`}
       href={href}
       onClick={onClick}
       download={download}

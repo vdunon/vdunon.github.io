@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from "react";
+import Button from "./button";
 
 export interface BubblesConfig {
     maxWidth?: number;
@@ -8,6 +9,8 @@ export interface BubblesConfig {
     minDuration?: number;
     maxBubbles?: number;
     gameActivated?: boolean;
+    duration?: number;
+    setGameStatus: Function;
 }
 
 interface BubblesAreaProps {
@@ -21,20 +24,58 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
         maxDuration: 55,
         minDuration: 15,
         maxBubbles: 28,
+        duration: 30,
         gameActivated: false,
         ...config
     } as const;
 
+    const [isPermanentlyDisabled, setIsPermanentlyDisabled] = useState<boolean>(false);
+    const isGameActive = isPermanentlyDisabled ? false : finalConfig.gameActivated;
     const areaRef = useRef<HTMLDivElement>(null);
     const [score, setScore] = useState<number>(0);
+    const [timeLeft, setTimeleft] = useState<number>(finalConfig.duration);
     const [hasClickedAnyBubble, setHasClickedAnyBubble] = useState<boolean>(false);
 
     const randomValue = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min;
+
+    const handleExit = () => {
+        config?.setGameStatus(false);
+        setScore(0);
+        setHasClickedAnyBubble(false);
+        setTimeleft(finalConfig.duration);
+    };
+
+    const handlePermanentDisable = () => {
+        setIsPermanentlyDisabled(true);
+        handleExit();
+    };
+
+    useEffect(() => {
+        if (!hasClickedAnyBubble || timeLeft <= 0 || !isGameActive) return;
+
+        const timer = setInterval(() => {
+            setTimeleft((prev) => {
+                if (prev <= 1) {
+                    clearInterval(timer);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+        return () => clearInterval(timer);
+    }, [hasClickedAnyBubble, timeLeft, isGameActive]);
+
+    useEffect(() => {
+        if (hasClickedAnyBubble && timeLeft === 0) {
+            handleExit();
+        }
+    }, [timeLeft, hasClickedAnyBubble]);
 
     useEffect(() => {
         const container = areaRef.current;
         if (!container) return;
 
+        let isEffectAlive = true;
         const activeBubbles: { element: HTMLSpanElement; animation: Animation }[] = [];
 
         const maxBubbles = finalConfig.maxBubbles;
@@ -42,7 +83,7 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
         const rows = Math.ceil(maxBubbles / columns);
 
         const createBubble = (index?: number) => {
-            if (!container) return;
+            if (!container || !isEffectAlive) return;
 
             const element = document.createElement("span");
             element.className = "absolute rounded-full border border-purple-500/20 bg-gradient-to-br from-[#9153E3]/10 to-blue-500/5 shadow-[inset_0_4px_12px_rgba(255,255,255,0.15),0_4px_10px_rgba(0,0,0,0.02)] backdrop-blur-[0.5px] transition-property[width,height,opacity] duration-300";
@@ -53,7 +94,6 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
 
             element.style.width = `${size}px`;
             element.style.height = `${size}px`;
-
             element.style.left = "0px";
 
             let startX = isGoingLeft ? 110 : -15;
@@ -93,11 +133,13 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
 
             animation.onfinish = () => destroyBubble(bubbleData);
 
-            if (finalConfig.gameActivated) {
+            if (isGameActive) {
                 element.style.pointerEvents = "auto";
                 element.style.cursor = hasClickedAnyBubble ? "pointer" : "default";
 
                 element.addEventListener("click", () => {
+                    if (element.style.opacity === "0") return;
+
                     animation.pause();
                     element.style.width = "0px";
                     element.style.height = "0px";
@@ -115,7 +157,6 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
                             (el as HTMLElement).style.cursor = "pointer";
                         });
                     }
-
                     setTimeout(() => destroyBubble(bubbleData), 300);
                 });
             }
@@ -125,22 +166,51 @@ export default function BubblesArea({ config }: BubblesAreaProps) {
             bubble.element.remove();
             const index = activeBubbles.indexOf(bubble);
             if (index > -1) activeBubbles.splice(index, 1);
-            createBubble();
+            if (isEffectAlive) {
+                createBubble();
+            }
         };
 
-        for (let i = 0; i < maxBubbles; i++)
+        for (let i = 0; i < maxBubbles; i++) {
             createBubble(i);
+        }
 
-        return () => activeBubbles.forEach((b) => b.element.remove());
-    }, [finalConfig.maxBubbles, finalConfig.gameActivated, hasClickedAnyBubble]);
+        return () => {
+            isEffectAlive = false;
+            activeBubbles.forEach((b) => {
+                b.animation.cancel();
+                b.element.remove();
+            });
+        };
+    }, [finalConfig.maxBubbles, isGameActive, hasClickedAnyBubble]);
 
     return (
-        <div ref={areaRef} className="fixed inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-            <style>{`.bubble-bg { pointer-events: ${finalConfig.gameActivated ? "auto" : "none"}; }`}</style>
-            {finalConfig.gameActivated && (
-                <div className="absolute right-4 top-4 px-4 py-2 bg-purple-800 text-white font-bold rounded-lg shadow-md z-50 pointer-events-auto">
-                    <p className="m-0">Score: {score}</p>
-                </div>
+        <div
+            ref={areaRef}
+            className={`fixed inset-0 w-full h-full overflow-hidden z-100 transition-colors duration-300 ${
+                hasClickedAnyBubble ? "bg-white/60 backdrop-blur-sm pointer-events-auto" : "pointer-events-none"
+            }`}
+        >
+            <style>{`.bubble-bg { pointer-events: ${isGameActive ? "auto" : "none"}; }`}</style>
+            {hasClickedAnyBubble && (
+                <>
+                    <div className="absolute left-4 top-4 pointer-events-auto flex flex-col gap-2">
+                        <Button onClick={handleExit}>Exit</Button>
+                        <Button variant="secondary" onClick={handlePermanentDisable}>
+                            Disable Minigame
+                        </Button>
+                    </div>
+                    <div className="absolute right-4 top-4 px-4 py-2 bg-(image:--gradient-main) text-white font-bold rounded-lg shadow-md z-50 pointer-events-auto">
+                        <p className="m-0">Score: {score}</p>
+                    </div>
+                    <div className="absolute right-[50%] top-[50%] translate-x-[50%] -translate-y-[50%] font-bold text-2xl text-gray-800 rounded-lg z-50 pointer-events-auto">
+                        <p className="m-0 text-center select-none">
+                            Explode bubbles!
+                            <br/>
+                            Time left: {timeLeft}s
+                        </p>
+                    </div>
+                </>
             )}
         </div>
     );

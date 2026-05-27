@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Jockey_One } from "next/font/google";
-import Footer from "./sections/footer";
 import "./css/globals.css";
-import Navbar from "./components/navbar";
 
 const jockerOne = Jockey_One({
   weight: "400",
@@ -73,9 +71,7 @@ export default function RootLayout({
       <body
         className={`${jockerOne.variable} antialiased`}
       >
-        <Navbar/>
         {children}
-        <Footer/>
       </body>
     </html>
   );
